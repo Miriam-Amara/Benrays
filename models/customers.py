@@ -17,8 +17,8 @@ class Customer(BaseModel, Base):
     __tablename__ = "customers"
     first_name: Mapped[str] = mapped_column(String(100), nullable=False)
     last_name: Mapped[str] = mapped_column(String(100), nullable=True)
-    phone_number: Mapped[str] = mapped_column(String(11), nullable=False)
+    phone_number: Mapped[str] = mapped_column(String(11), nullable=True)
     email: Mapped[str] = mapped_column(String(60), nullable=True)
-    city: Mapped[str] = mapped_column(String(20), nullable=False)
-    state: Mapped[str] = mapped_column(String(20), nullable=False)
+    city: Mapped[str] = mapped_column(String(20), nullable=True)
+    state: Mapped[str] = mapped_column(String(20), nullable=True)
     country: Mapped[str] = mapped_column(String(50), nullable=True)
