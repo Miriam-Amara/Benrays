@@ -5,8 +5,9 @@ Benrays inventory management system.
 """
 
 from models.base_model import BaseModel, Base
+from models.warehouses import warehouse_employee
 
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import String, Float
 
 
@@ -21,10 +22,16 @@ class Employee(BaseModel, Base):
     last_name: Mapped[str] = mapped_column(String(60), nullable=False)
     phone_number: Mapped[str] = mapped_column(String(11), nullable=False)
     email: Mapped[str] = mapped_column(String(60), nullable=True)
+    password: Mapped[str] = mapped_column(String(60), nullable=False)
     street: Mapped[str] = mapped_column(String(60), nullable=False)
     city: Mapped[str] = mapped_column(String(60), nullable=False)
     state: Mapped[str] = mapped_column(String(60), nullable=False)
     salary: Mapped[float] = mapped_column(Float, nullable=True)
     role: Mapped[str] = mapped_column(String(20), nullable=False)
     authorization: Mapped[str] = mapped_column(String(200), nullable=True)
-    qualification: Mapped[str] = mapped_column(String(60), nullable=False)
+    qualification: Mapped[str] = mapped_column(String(60), nullable=True)
+
+    warehouses: Mapped[list["Warehouse"]] = relationship(
+                                                secondary=warehouse_employee,
+                                                back_populates="employees",
+                                            )
