@@ -21,7 +21,7 @@ class InventoryTransaction(BaseModel, Base):
     category_id: Mapped[str] = mapped_column(ForeignKey("categories.id"), nullable=False)
     product_id: Mapped[str] = mapped_column(ForeignKey("products.id"), nullable=False)
     color_id: Mapped[str] = mapped_column(ForeignKey("colors.id"), nullable=False)
-    warehouse_id: Mapped[str] = mapped_column(ForeignKey("warehouses_id"), nullable=False)
+    warehouse_id: Mapped[str] = mapped_column(ForeignKey("warehouses.id"), nullable=False)
     transaction_type: Mapped[str] = mapped_column(
         Enum("IN", "OUT", "TRANSFER_IN", "TRANSFER_OUT", "RETURNED_IN", "RETURNED_OUT"),
         nullable=False

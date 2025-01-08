@@ -21,4 +21,4 @@ class Inventory(BaseModel, Base):
     product_id: Mapped[str] = mapped_column(ForeignKey("products.id"), nullable=False)
     color_id: Mapped[str] = mapped_column(ForeignKey("colors.id"), nullable=False)
     quantity: Mapped[int] = mapped_column(Integer, nullable=False)
-    warehouse_id: Mapped[str] = mapped_column(ForeignKey("warehouses_id"), nullable=False)
+    warehouse_id: Mapped[str] = mapped_column(ForeignKey("warehouses.id"), nullable=False)
