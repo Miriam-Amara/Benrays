@@ -8,7 +8,7 @@ from models.employees import Employee
 import unittest
 
 
-class Testemployee(unittest.TestCase):
+class TestEmployee(unittest.TestCase):
     """
     Defines test cases for the Employee class attributes and methods
     """
@@ -37,7 +37,7 @@ class Testemployee(unittest.TestCase):
         self.assertTrue(hasattr(self.employee, "authorization"))
         self.assertTrue(hasattr(self.employee, "qualification"))
         self.assertTrue(hasattr(self.employee, "save"))
-        self.assertTrue(hasattr(self.employee, "__repr__"))
+        self.assertTrue(hasattr(self.employee, "__str__"))
 
     def test_create_obj_with_kwargs(self):
         """ 

@@ -28,7 +28,7 @@ class TestOrder(unittest.TestCase):
         self.assertTrue(hasattr(self.orders, "updated_at"))
         self.assertTrue(hasattr(self.orders, "status"))
         self.assertTrue(hasattr(self.orders, "save"))
-        self.assertTrue(hasattr(self.orders, "__repr__"))
+        self.assertTrue(hasattr(self.orders, "__str__"))
 
 
 if __name__ == "__main__":

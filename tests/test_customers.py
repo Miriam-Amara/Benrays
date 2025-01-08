@@ -32,7 +32,7 @@ class TestCustomer(unittest.TestCase):
         self.assertTrue(hasattr(self.customer, "state"))
         self.assertTrue(hasattr(self.customer, "country"))
         self.assertTrue(hasattr(self.customer, "save"))
-        self.assertTrue(hasattr(self.customer, "__repr__"))
+        self.assertTrue(hasattr(self.customer, "__str__"))
 
     def test_create_obj_with_kwargs(self):
         """ 
@@ -46,3 +46,13 @@ class TestCustomer(unittest.TestCase):
         self.assertEqual(customer.city, "LeftRight")
         self.assertEqual(customer.state, "Double")
 
+    def test_save(self):
+        """ Confirms objects are saved to database """
+        customer = Customer(first_name="oooo", phone_number=84484, city="ooo",
+                            state="ooo"
+                        )
+        customer.save()
+
+
+if __name__ == "__main__":
+    unittest.main()

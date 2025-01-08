@@ -35,7 +35,7 @@ class TestInventoryTransaction(unittest.TestCase):
         self.assertTrue(hasattr(self.inventory_transaction, "source"))
         self.assertTrue(hasattr(self.inventory_transaction, "employee_id"))
         self.assertTrue(hasattr(self.inventory_transaction, "save"))
-        self.assertTrue(hasattr(self.inventory_transaction, "__repr__"))
+        self.assertTrue(hasattr(self.inventory_transaction, "__str__"))
 
 
 if __name__ == "__main__":

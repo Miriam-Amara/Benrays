@@ -36,7 +36,7 @@ class TestPurchaseOrder(unittest.TestCase):
         self.assertTrue(hasattr(self.purchase_orders, "supplier_id"))
         self.assertTrue(hasattr(self.purchase_orders, "employee_id"))
         self.assertTrue(hasattr(self.purchase_orders, "save"))
-        self.assertTrue(hasattr(self.purchase_orders, "__repr__"))
+        self.assertTrue(hasattr(self.purchase_orders, "__str__"))
 
 
 class TestCustomerOrder(unittest.TestCase):

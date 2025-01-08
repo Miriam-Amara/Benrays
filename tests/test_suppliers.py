@@ -31,7 +31,7 @@ class TestSupplier(unittest.TestCase):
         self.assertTrue(hasattr(self.supplier, "state"))
         self.assertTrue(hasattr(self.supplier, "country"))
         self.assertTrue(hasattr(self.supplier, "save"))
-        self.assertTrue(hasattr(self.supplier, "__repr__"))
+        self.assertTrue(hasattr(self.supplier, "__str__"))
 
     def test_create_obj_with_kwargs(self):
         """ 
@@ -45,4 +45,14 @@ class TestSupplier(unittest.TestCase):
         self.assertEqual(supplier.street, "glory street")
         self.assertEqual(supplier.city, "LeftRight")
         self.assertEqual(supplier.state, "Double")
+    
+    def test_save(self):
+        """ Confirms objects are saved to database """
+        supplier1 = Supplier(company_name="ggg", phone_number=9877,
+                             city="ggg", state="ggg"
+                            )
+        supplier1.save()
 
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)
