@@ -16,17 +16,12 @@ from sqlalchemy import String, ForeignKey, Table, Column
 
 
 
-ProductColor = Table(
+product_color = Table(
                         "product_colors",
                         Base.metadata,
-                        Column("product_id", ForeignKey("products.id"),
-                               primary_key=True, nullable=False
-                            ),
-                        Column("color_id", ForeignKey("colors.id"),
-                               primary_key=True, nullable=False
-                            ),
+                        Column("product_id", ForeignKey("products.id"), primary_key=True),
+                        Column("color_id", ForeignKey("colors.id"), primary_key=True)
                 )
-
 
 
 class Category(BaseModel, Base):
@@ -34,9 +29,9 @@ class Category(BaseModel, Base):
     Defines the categories of products
     """
     __tablename__ = "categories"
-    name: Mapped[str] = mapped_column(String(60), nullable=False)
-    products: Mapped[list["Product"]] = relationship(back_populates="categories", cascade="all, delete-orphan")
-
+    name: Mapped[str] = mapped_column(String(60), unique=True, nullable=False)
+    products: Mapped[list["Product"]] = relationship(back_populates="category")
+    
 
 
 class Product(BaseModel, Base):
@@ -44,12 +39,10 @@ class Product(BaseModel, Base):
     Creates a blueprint for products in Benrays inventory
     """
     __tablename__ = "products"
-    name: Mapped[str] = mapped_column(String(60), nullable=False)
+    name: Mapped[str] = mapped_column(String(60), unique=True, nullable=False)
     category_id: Mapped[str] = mapped_column(ForeignKey("categories.id"), nullable=False)
-
-    categories: Mapped["Category"] = relationship(back_populates="products")
-    colors: Mapped[list["Color"]] = relationship(secondary=ProductColor, back_populates="products")
-    
+    category: Mapped["Category"] = relationship(back_populates="products")
+    colors: Mapped[list["Color"]] = relationship(secondary=product_color, back_populates="products")    
 
 
 
@@ -58,6 +51,6 @@ class Color(BaseModel, Base):
     Defines the colors for the products in Benrays inventory
     """
     __tablename__ = "colors"
-    name: Mapped[str] = mapped_column(String(60), nullable=False)
-
-    products: Mapped[list["Product"]] = relationship(secondary=ProductColor, back_populates="colors")
+    name: Mapped[str] = mapped_column(String(60), unique=True, nullable=False)
+    products: Mapped[list["Product"]] = relationship(secondary=product_color, back_populates="colors")
+    
