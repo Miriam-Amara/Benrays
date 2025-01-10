@@ -1,0 +1,24 @@
+{% extends "employee_base.html" %}
+{% block content %}
+    <div class="row admin_content">
+        <div class="col-3 nav">
+            <div class="nav_content">
+                <div class="btn">
+                    <a href="">Products</a>
+                </div>
+                <div class="btn">
+                    <a href="">Warehouses</a>
+                </div>
+                <div class="btn">
+                    <a href="#users">Users</a>
+                </div>
+            </div>
+        </div>
+        <div id="users" class="col dynamic_content">
+            {% include 'register.html' %}
+        </div>
+    </div>
+{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='admin.css') }}">
+{% endblock %}

@@ -1,0 +1,19 @@
+
+
+.main_body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.header{
+    color: #FFF;
+    background-color: #2B2E63;
+    border: 1px solid #000;
+}
+
+.content{
+    margin: 3em 10em 10em 10em;
+    width: 50em;
+}

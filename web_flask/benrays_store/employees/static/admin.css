@@ -1,0 +1,32 @@
+
+
+.admin_content{
+    display: flex;
+    
+    
+}
+
+.nav{
+    background-color: #2B2E63;
+    border: 1px solid #DDD;
+    height: inherit;
+    /* width: 20em; */
+    display: flex;
+    flex-direction: column;
+}
+
+.btn{
+    background-color: #FFF;
+    margin: 2em;
+    width: 10em;
+}
+
+a{
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.dynmaic_content{
+    
+}
