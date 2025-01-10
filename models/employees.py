@@ -21,7 +21,7 @@ class Employee(BaseModel, Base):
     middle_name: Mapped[str] = mapped_column(String(60), nullable=True)
     last_name: Mapped[str] = mapped_column(String(60), nullable=False)
     phone_number: Mapped[str] = mapped_column(String(11), nullable=False)
-    email: Mapped[str] = mapped_column(String(60), nullable=True)
+    email: Mapped[str] = mapped_column(String(60), unique=True, nullable=False)
     password: Mapped[str] = mapped_column(String(60), nullable=False)
     street: Mapped[str] = mapped_column(String(60), nullable=False)
     city: Mapped[str] = mapped_column(String(60), nullable=False)
