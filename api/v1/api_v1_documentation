@@ -1,0 +1,5 @@
+# emplyees registration
+/api/v1/employees/register
+
+# employees login
+/api/v1/employees/
