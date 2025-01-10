@@ -32,6 +32,8 @@ host = os.getenv("BENRAYS_INVENTORY_MYSQL_HOST")
 port = os.getenv("BENRAYS_INVENTORY_MYSQL_PORT")
 database = os.getenv("BENRAYS_INVENTORY_MYSQL_DATABASE")
 
+
+
 db_url = f"mysql+mysqldb://{db_user}:{passwd}@{host}:{port}/{database}"
 
 
@@ -79,7 +81,7 @@ class DBStorage:
 
         return objects_dict
     
-    def get(self, cls, id=None, name=None, date=None):
+    def get(self, cls, id=None, name=None, email=None):
         """ Returns the object that has the specified id or name"""
         obj_dict = {}
         if id:
@@ -87,6 +89,9 @@ class DBStorage:
             obj = self.__session.scalars(query).one_or_none()
         elif name:
             query = select(cls).where(cls.name == name)
+            obj = self.__session.scalars(query).one_or_none()
+        elif email:
+            query = select(cls).where(cls.email == email)
             obj = self.__session.scalars(query).one_or_none()
         
         if obj:
@@ -144,3 +149,7 @@ class DBStorage:
         """ Closes database session """
         self.__session.remove()
 
+
+if __name__ == "__main__":
+    storage = DBStorage()
+    storage.reload()
