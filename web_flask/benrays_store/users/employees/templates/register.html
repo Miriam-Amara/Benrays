@@ -1,0 +1,353 @@
+
+<div class="offcanvas offcanvas-custom" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+    <div class="offcanvas-body">
+        <div>
+            <form  method="POST" action="">
+                {{ form.hidden_tag() }}
+                <fieldset>
+                    <div class="labels">
+                        <div class="label-1">
+                            {{ form.first_name.label(class="control-label") }}
+
+                            {% if form.first_name.errors %}
+                                {{ form.first_name(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.first_name.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.first_name(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="label-2">
+                            {{ form.middle_name.label(class="control-label") }}
+
+                            {% if form.middle_name.errors %}
+                                {{ form.middle_name(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.middle_name.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.middle_name(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="labels">
+                        <div class="label-1">
+                            {{ form.last_name.label(class="control-label") }}
+
+                            {% if form.last_name.errors %}
+                                {{ form.last_name(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.last_name.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.last_name(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="label-2">
+                            {{ form.age.label(class="control-label") }}
+                            
+                            {% if form.age.errors %}
+                                {{ form.age(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.age.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.age(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="labels">
+                        <div class="label-1">
+                            {{ form.gender.label(class="control-label") }}
+                            
+                            {% if form.gender.errors %}
+                                {{ form.gender(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.gender.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.gender(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="label-2">
+                            {{ form.marital_status.label(class="control-label") }}
+                            
+                            {% if form.marital_status.errors %}
+                                {{ form.marital_status(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.marital_status.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.marital_status(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="labels">
+                        <div class="label-1">
+                            {{ form.phone_number.label(class="control-label") }}
+                            
+                            {% if form.phone_number.errors %}
+                                {{ form.phone_number(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.phone_number.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.phone_number(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="label-2">
+                            {{ form.email.label(class="control-label") }}
+                            
+                            {% if form.email.errors %}
+                                {{ form.email(class=" is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.email(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="labels">
+                        <div class="label-1">
+                            {{ form.street.label(class="control-label") }}
+                            
+                            {% if form.street.errors %}
+                                {{ form.street(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.street.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.street(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="label-2">
+                            {{ form.city.label(class="control-label") }}
+
+                            {% if form.city.errors %}
+                                {{ form.city(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.city.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.city(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="labels">
+                        <div class="label-1">
+                            {{ form.state.label(class="control-label") }}
+                            
+                            {% if form.state.errors %}
+                                {{ form.state(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.state.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.state(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="label-2">
+                            {{ form.salary.label(class="control-label") }}
+                            
+                            {% if form.salary.errors %}
+                                {{ form.salary(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.salary.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.salary(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="labels">
+                        <div class="label-1">
+                            {{ form.password.label(class="control-label") }}
+                            
+                            {% if form.password.errors %}
+                                {{ form.password(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.password.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.password(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="label-2">
+                            {{ form.confirm_password.label(class="control-label") }}
+                            
+                            {% if form.confirm_password.errors %}
+                                {{ form.confirm_password(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.confirm_password.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.confirm_password(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="labels">
+                        <div class="label-1">
+                            {{ form.work_experience.label(class="control-label") }}
+                            
+                            {% if form.work_experience.errors %}
+                                {{ form.work_experience(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.work_experience.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.work_experience(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="label-2">
+                            {{ form.qualifications.label(class="control-label") }}
+                            
+                            {% if form.qualifications.errors %}
+                                {{ form.qualifications(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.qualifications.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.qualifications(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="labels">
+                        <div class="label-1">
+                            {{ form.name_of_guarantor.label(class="control-label") }}
+                            
+                            {% if form.name_of_guarantor.errors %}
+                                {{ form.name_of_guarantor(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.name_of_guarantor.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.name_of_guarantor(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="label-2">
+                            {{ form.guarantor_contact.label(class="control-label") }}
+                            
+                            {% if form.guarantor_contact.errors %}
+                                {{ form.guarantor_contact(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.guarantor_contact.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.guarantor_contact(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="labels">
+                        <div class="label-1">
+                            {{ form.role.label(class="control-label") }}
+                            
+                            {% if form.role.errors %}
+                                {{ form.role(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.role.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.role(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="label-2">
+                            {{ form.warehouses.label(class="control-label") }}
+                            
+                            {% if form.warehouses.errors %}
+                                {{ form.warehouses(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.warehouses.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.warehouses(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="labels">
+                        <div class="label-1">
+                            {{ form.permissions.label(class="control-label") }}
+                            
+                            {% if form.permissions.errors %}
+                                {{ form.permissions(class="is-invalid control-label-data") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.permissions.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.permissions(class="control-label-data") }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="bttn">
+                    <button class="btn btn-disable" data-bs-dismiss="offcanvas" aria-label="Close">
+                        Close
+                    </button>
+                    {{ form.submit(class="btn btn-primary btn-save") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

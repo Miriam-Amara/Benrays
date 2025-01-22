@@ -1,0 +1,70 @@
+
+/* --------------------- REGISTRATION FORM STYLES --------------------- */
+
+/* contains two divs for two form labels */
+.labels{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.labels div{
+    margin-bottom: 20px;
+    width: 18rem;
+}
+
+.labels ul{
+    width: 180px;
+    height: auto;
+    list-style: none;
+    padding: 0;
+    border: none !important;
+}
+
+/* the first div in .labels class */
+.label-1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* the second div in .labels class */
+.label-2{
+    margin-left: 5px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* each form label */
+.control-label{
+    width: 20px;
+}
+
+/* each form label input */
+.control-label-data{
+    height: 24px;
+    width: 11.25rem;
+    border: 1px solid #2B2E6357;
+}
+
+.is-invalid{
+    border: 1px solid #A90202;
+}
+
+.invalid-feedback{
+    flex-basis: 100%;
+    text-align: start;
+}
+
+
+/* ---------- BUTTONS ---------- */
+.bttn{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.btn-save{
+    width: 7rem;
+}

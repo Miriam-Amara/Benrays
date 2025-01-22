@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('employee.static', filename='register.css') }}">
+{% endblock head %}
+
+{% block short_msg %}
+    <div class="title">
+        EMPLOYEES
+    </div>
+    <div class="message">
+        Add new employee OR view, edit and delete employee info
+    </div>
+{% endblock short_msg %}
+
+
+{% block info %}
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+        Add Employee
+    </button>
+    {% include "register.html" %}
+
+    <!-- INFORMATION SECTION -->
+    <main class="info">
+        <div class="row header">
+            <div class="col-2 col-header">Employee Id</div>
+            <div class="col col-header">First Name</div>
+            <div class="col col-header">Last Name</div>
+            <div class="col col-header">Phone Number</div>
+            <div class="col col-header">Role</div>
+            <div class="col col-header">Warehouses</div>
+            <div class="col col-header">Action</div>
+        </div>
+        <div class="row header">
+            <div class="col-2 col-{{ idx }}"></div>
+            <div class="col col-{{ idx }}"></div>
+            <div class="col col-{{ idx }}"></div>
+            <div class="col col-{{ idx }}"></div>
+            <div class="col col-{{ idx }}"></div>
+            <div class="col col-{{ idx }}"></div>
+            <div class="col col-{{ idx }}"></div>
+        </div>
+        
+
+
+    </main>
+{% endblock info %}
