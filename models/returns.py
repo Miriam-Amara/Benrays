@@ -20,19 +20,19 @@ class ReturnInward(BaseModel, Base):
     """
     __tablename__ = "return_inwards"
 
-    category_id: Mapped[str] = mapped_column(ForeignKey("categories.id"), nullable=False)
-    product_id: Mapped[str] = mapped_column(ForeignKey("products.id"), nullable=False)
-    color_id: Mapped[str] = mapped_column(ForeignKey("colors.id"), nullable=False)
-    quantity: Mapped[int] = mapped_column(Integer, nullable=False)
-    unit_selling_price: Mapped[Float] = mapped_column(Float, nullable=False)
-    total_price: Mapped[Float] = mapped_column(Float, nullable=False)
-    amount_paid: Mapped[Float] = mapped_column(Float, nullable=False)
-    payment_status: Mapped[str] = mapped_column(Enum("PAID", "UNPAID", "DEPOSIT"), nullable=False)
-    payment_type: Mapped[str] = mapped_column(String(20), nullable=False)
+    category_id: Mapped[str] = mapped_column(ForeignKey("categories.id"))
+    product_id: Mapped[str] = mapped_column(ForeignKey("products.id"))
+    color_id: Mapped[str] = mapped_column(ForeignKey("colors.id"))
+    quantity: Mapped[int] = mapped_column(Integer)
+    unit_selling_price: Mapped[Float] = mapped_column(Float)
+    total_price: Mapped[Float] = mapped_column(Float)
+    amount_paid: Mapped[Float] = mapped_column(Float)
+    payment_status: Mapped[str] = mapped_column(Enum("paid", "unpaid", "deposit"))
+    payment_type: Mapped[str] = mapped_column(String(20))
     customer_id: Mapped[str] = mapped_column(ForeignKey("customers.id"), default="unknown")
-    warehouse_id: Mapped[str] = mapped_column(ForeignKey("warehouses.id"), nullable=False)
+    warehouse_id: Mapped[str] = mapped_column(ForeignKey("warehouses.id"))
     reason: Mapped[str] = mapped_column(String(100), nullable=True)
-    employee_id: Mapped[str] = mapped_column(ForeignKey("employees.id"), nullable=False)
+    employee_id: Mapped[str] = mapped_column(ForeignKey("employees.id"))
 
 
 
@@ -45,16 +45,16 @@ class ReturnOutward(BaseModel, Base):
     """
     __tablename__ = "return_outwards"
 
-    category_id: Mapped[str] = mapped_column(ForeignKey("categories.id"), nullable=False)
-    product_id: Mapped[str] = mapped_column(ForeignKey("products.id"), nullable=False)
-    color_id: Mapped[str] = mapped_column(ForeignKey("colors.id"), nullable=False)
-    quantity: Mapped[int] = mapped_column(Integer, nullable=False)
-    unit_cost_price: Mapped[Float] = mapped_column(Float, nullable=False)
-    total_price: Mapped[Float] = mapped_column(Float, nullable=False)
-    amount_paid: Mapped[Float] = mapped_column(Float, nullable=False)
-    payment_status: Mapped[str] = mapped_column(Enum("PAID", "UNPAID", "DEPOSIT"), nullable=False)
-    payment_type: Mapped[str] = mapped_column(String(20), nullable=False)
+    category_id: Mapped[str] = mapped_column(ForeignKey("categories.id"))
+    product_id: Mapped[str] = mapped_column(ForeignKey("products.id"))
+    color_id: Mapped[str] = mapped_column(ForeignKey("colors.id"))
+    quantity: Mapped[int] = mapped_column(Integer)
+    unit_cost_price: Mapped[Float] = mapped_column(Float)
+    total_price: Mapped[Float] = mapped_column(Float)
+    amount_paid: Mapped[Float] = mapped_column(Float)
+    payment_status: Mapped[str] = mapped_column(Enum("PAID", "UNPAID", "DEPOSIT"))
+    payment_type: Mapped[str] = mapped_column(String(20))
     supplier_id: Mapped[str] = mapped_column(ForeignKey("suppliers.id"), default="unknown")
-    warehouse_id: Mapped[str] = mapped_column(ForeignKey("warehouses.id"), nullable=False)
+    warehouse_id: Mapped[str] = mapped_column(ForeignKey("warehouses.id"))
     reason: Mapped[str] = mapped_column(String(100), nullable=True)
-    employee_id: Mapped[str] = mapped_column(ForeignKey("employees.id"), nullable=False)
+    employee_id: Mapped[str] = mapped_column(ForeignKey("employees.id"))

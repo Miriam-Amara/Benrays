@@ -31,11 +31,11 @@ class Warehouse(BaseModel, Base):
     Defines the Warehouses in Benrays inventory management system
     """
     __tablename__ = "warehouses"
-    name: Mapped[str] = mapped_column(String(60), unique=True, nullable=False)
-    phone_number: Mapped[str] = mapped_column(String(11), nullable=False)
-    street: Mapped[str] = mapped_column(String(60), nullable=False)
-    city: Mapped[str] = mapped_column(String(20), nullable=False)
-    state: Mapped[str] = mapped_column(String(20), nullable=False)
+    name: Mapped[str] = mapped_column(String(60), unique=True)
+    phone_number: Mapped[str] = mapped_column(String(11))
+    street: Mapped[str] = mapped_column(String(60))
+    city: Mapped[str] = mapped_column(String(20))
+    state: Mapped[str] = mapped_column(String(20))
 
     products: Mapped[list["Product"]] = relationship(
                                             secondary= warehouse_product,

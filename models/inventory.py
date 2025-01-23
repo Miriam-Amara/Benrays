@@ -17,8 +17,8 @@ class Inventory(BaseModel, Base):
     """
     __tablename__ = "inventory"
 
-    category_id: Mapped[str] = mapped_column(ForeignKey("categories.id"), nullable=False)
-    product_id: Mapped[str] = mapped_column(ForeignKey("products.id"), nullable=False)
-    color_id: Mapped[str] = mapped_column(ForeignKey("colors.id"), nullable=False)
-    quantity: Mapped[int] = mapped_column(Integer, nullable=False)
-    warehouse_id: Mapped[str] = mapped_column(ForeignKey("warehouses.id"), nullable=False)
+    category_id: Mapped[str] = mapped_column(ForeignKey("categories.id"))
+    product_id: Mapped[str] = mapped_column(ForeignKey("products.id"))
+    color_id: Mapped[str] = mapped_column(ForeignKey("colors.id"))
+    quantity: Mapped[int] = mapped_column(Integer)
+    warehouse_id: Mapped[str] = mapped_column(ForeignKey("warehouses.id"))

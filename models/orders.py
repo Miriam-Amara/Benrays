@@ -8,7 +8,7 @@ Benrays inventory management system
 from models.base_model import BaseModel, Base
 
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import String, ForeignKey
+from sqlalchemy import String, Enum
 
 
 class Order(BaseModel, Base):
@@ -18,4 +18,7 @@ class Order(BaseModel, Base):
     """
     __tablename__ = "orders"
 
-    status: Mapped[str] = mapped_column(String(20), nullable=False)
+    order_status: Mapped[str] = mapped_column(String(20))
+    payment_status: Mapped[str] = mapped_column(
+                                                Enum("paid", "unpaid", "deposit"))
+    payment_methods: Mapped[str] = mapped_column(String(150))
