@@ -59,8 +59,7 @@ class EmployeeRegistration(FlaskForm):
                                 ("secretary", "Secretary"), ("manager", "Manager")])
     work_experience = TextAreaField("Work Experience",
                                     validators=[Length(max=200)])
-    qualifications = StringField("Qualifications",
-                                 validators=[Length(min=5, max=150)])
+    qualifications = StringField("Educational Qualifications")
     name_of_guarantor = StringField(
         "Name of Guarantor",
         validators=[DataRequired(), Length(min=5, max=150)]
