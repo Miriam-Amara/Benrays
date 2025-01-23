@@ -8,7 +8,7 @@ from models.base_model import BaseModel, Base
 from models.warehouses import warehouse_employee
 
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import String, Float
+from sqlalchemy import String, Integer, Float, Enum
 
 
 class Employee(BaseModel, Base):
@@ -17,19 +17,25 @@ class Employee(BaseModel, Base):
     """
     __tablename__ = "employees"
 
-    first_name: Mapped[str] = mapped_column(String(60), nullable=False)
-    middle_name: Mapped[str] = mapped_column(String(60), nullable=True)
-    last_name: Mapped[str] = mapped_column(String(60), nullable=False)
+    first_name: Mapped[str] = mapped_column(String(30), nullable=False)
+    middle_name: Mapped[str] = mapped_column(String(30))
+    last_name: Mapped[str] = mapped_column(String(30), nullable=False)
+    age: Mapped[int] = mapped_column(Integer, nullable=False)
+    gender: Mapped[str] = mapped_column(Enum("male", "female"), nullable=False)
+    marital_status: Mapped[str] = mapped_column(Enum("single", "married"), nullable=False)
     phone_number: Mapped[str] = mapped_column(String(11), nullable=False)
     email: Mapped[str] = mapped_column(String(60), unique=True, nullable=False)
     password: Mapped[str] = mapped_column(String(60), nullable=False)
     street: Mapped[str] = mapped_column(String(60), nullable=False)
     city: Mapped[str] = mapped_column(String(60), nullable=False)
-    state: Mapped[str] = mapped_column(String(60), nullable=False)
-    salary: Mapped[float] = mapped_column(Float, nullable=True)
-    role: Mapped[str] = mapped_column(String(20), nullable=False)
-    authorization: Mapped[str] = mapped_column(String(200), nullable=True)
-    qualification: Mapped[str] = mapped_column(String(60), nullable=True)
+    state: Mapped[str] = mapped_column(String(20), nullable=False)
+    role: Mapped[str] = mapped_column(String(30), nullable=False)
+    work_experience: Mapped[str] = mapped_column(String(200))
+    qualifications: Mapped[str] = mapped_column(String(150))
+    name_of_guarantor: Mapped[str] = mapped_column(String(150), nullable=False)
+    guarantor_contact: Mapped[str] = mapped_column(String(11), nullable=False)
+    salary: Mapped[float] = mapped_column(Float, default=0.00)
+    permissions: Mapped[str] = mapped_column(String(200))
 
     warehouses: Mapped[list["Warehouse"]] = relationship(
                                                 secondary=warehouse_employee,
