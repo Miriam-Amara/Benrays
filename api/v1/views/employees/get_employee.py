@@ -25,7 +25,7 @@ get_employee_args.add_argument("password", type=str,
                         )
 
 
-class GetEmployee(Resource):
+class EmployeeByEmail(Resource):
     """
     Retrieves an employee from the database based on email
     and password
@@ -35,22 +35,23 @@ class GetEmployee(Resource):
         Checks if an employee exists in the database and retrieves
         the employee's data.
         """
-        from views import app, bcrypt
+        from views import bcrypt
         args = get_employee_args.parse_args()
         email = args["email"]
         password = args["password"]
+
+        # get user from database
         employee = storage.get(cls=Employee, email=email)
         if not employee:
-            abort(404, description="Not found")
+            abort(400, description="User not found")
 
         employee_data = list(employee.values())[0]
-        db_password = employee_data.password
-        # print(bcrypt.check_password_hash(db_password, password))
+        hashed_password = employee_data.password
+        print("\nchecking password hash:", bcrypt.check_password_hash(hashed_password, password))
+        if not bcrypt.check_password_hash(hashed_password, password):
+            abort(404, description="Password does not match")
         # print(db_password)
         # if not bcrypt.check_password_hash(db_password, password):
-        if password != db_password:
-            abort(404, description="Password does not match")
-        
 
         employee_data = employee_data.to_dict()
         del employee_data["password"]
@@ -121,4 +122,4 @@ class EmployeeCount(Resource):
 api.add_resource(GetEmployees, "/")
 api.add_resource(EmployeeCount, "/count")
 api.add_resource(EmployeeByID, "/<string:id>")
-api.add_resource(GetEmployee, "/data")
+api.add_resource(EmployeeByEmail, "/data")
