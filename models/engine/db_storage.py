@@ -54,7 +54,7 @@ class DBStorage:
         """ initializes attributes for DBStorage objects """
         self.__engine = create_engine(db_url, pool_pre_ping=True,)
         if os.getenv("DB_ENV") == "test":
-            # pass the test database for testing to avoid
+            # parse the test database for testing to avoid
             # deletion of the actual database.
             Base.metadata.drop_all(self.__engine)
         
@@ -81,14 +81,15 @@ class DBStorage:
 
         return objects_dict
     
-    def get(self, cls, id=None, name=None, email=None):
+    def get(self, cls, id=None, first_name=None, email=None):
         """ Returns the object that has the specified id or name"""
         obj_dict = {}
+        obj = ""
         if id:
             query = select(cls).where(cls.id == id)
             obj = self.__session.scalars(query).one_or_none()
-        elif name:
-            query = select(cls).where(cls.name == name)
+        elif first_name:
+            query = select(cls).where(cls.first_name == first_name)
             obj = self.__session.scalars(query).one_or_none()
         elif email:
             query = select(cls).where(cls.email == email)
@@ -126,8 +127,8 @@ class DBStorage:
         try:
             self.__session.commit()
         except Exception as e:
-            print(f"Failed to commit: {e}")
             self.__session.rollback()
+            raise ValueError(f"Failed to commit: {e}")
 
     def reload(self):
         """ Creates all tables and database session """
