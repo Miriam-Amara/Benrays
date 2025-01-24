@@ -5,9 +5,11 @@ This module provides Login class for
 Employees login
 """
 
-from  views.employees import employees_bp
 from models import storage
 from  models.employees import Employee
+from  views.employees import employees_bp
+from views.employees.utils import delete_attr
+
 
 from flask_restful import Api, Resource, reqparse, abort
 
@@ -47,16 +49,13 @@ class EmployeeByEmail(Resource):
 
         employee_data = list(employee.values())[0]
         hashed_password = employee_data.password
-        print("\nchecking password hash:", bcrypt.check_password_hash(hashed_password, password))
+        # print("\nchecking password hash:", bcrypt.check_password_hash(hashed_password, password))
         if not bcrypt.check_password_hash(hashed_password, password):
             abort(404, description="Password does not match")
-        # print(db_password)
-        # if not bcrypt.check_password_hash(db_password, password):
 
         employee_data = employee_data.to_dict()
-        del employee_data["password"]
-        del employee_data["authorization"]
-        del employee_data["__class__"]
+        delete_data = ["password", "permissions", "__class__"]
+        delete_attr(employee_dict=employee_data, *delete_data)
         return employee_data, 200
         
 
@@ -75,9 +74,8 @@ class EmployeeByID(Resource):
             abort(404, description="Not found")
 
         employee_data = list(employee.values())[0].to_dict()
-        del employee_data["password"]
-        del employee_data["authorization"]
-        del employee_data["__class__"]
+        delete_data = ["password", "permissions", "__class__"]
+        delete_attr(employee_dict=employee_data, *delete_data)
         return employee_data
         
 
@@ -94,11 +92,11 @@ class GetEmployees(Resource):
         employees = []
         all_employees = storage.all(cls=Employee)
 
+        delete_data = ["password", "permissions", "__class__"]
         for employee in all_employees.values():
             employee_data = employee.to_dict()
-            del employee_data["password"]
-            del employee_data["authorization"]
-            del employee_data["__class__"]
+            delete_attr(employee_dict=employee_data, *delete_data)
+            # print("\n\nEmployee data from GetEmployee", employee_data)
             employees.append(employee_data)
         return employees, 200
     
