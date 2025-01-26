@@ -14,6 +14,7 @@ class Supplier(BaseModel, Base):
     """
     Defines the Warehouses in Benrays inventory management system
     """
+
     __tablename__ = "suppliers"
     company_name: Mapped[str] = mapped_column(String(100))
     phone_number: Mapped[str] = mapped_column(String(11))

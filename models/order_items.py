@@ -17,6 +17,7 @@ class PurchaseOrder(BaseModel, Base):
     name, color, quantity, unit_cost_price, total_price,
     order_id, supplier_id, employee_id.
     """
+
     __tablename__ = "purchase_orders"
 
     order_id: Mapped[str] = mapped_column(ForeignKey("orders.id"))
@@ -26,7 +27,9 @@ class PurchaseOrder(BaseModel, Base):
     quantity: Mapped[int] = mapped_column(Integer)
     unit_cost_price: Mapped[Float] = mapped_column(Float)
     total_price: Mapped[Float] = mapped_column(Float)
-    supplier_id: Mapped[str] = mapped_column(ForeignKey("suppliers.id"), nullable=True)
+    supplier_id: Mapped[str] = mapped_column(
+        ForeignKey("suppliers.id"), nullable=True
+    )
     employee_id: Mapped[str] = mapped_column(ForeignKey("employees.id"))
 
 
@@ -36,6 +39,7 @@ class CustomerOrder(BaseModel, Base):
     name, color, quantity, unit_selling_price, total_price,
     order_id, customer_id, employee_id.
     """
+
     __tablename__ = "customer_orders"
 
     order_id: Mapped[str] = mapped_column(ForeignKey("orders.id"))
@@ -45,7 +49,9 @@ class CustomerOrder(BaseModel, Base):
     quantity: Mapped[int] = mapped_column(Integer)
     unit_selling_price: Mapped[Float] = mapped_column(Float)
     total_price: Mapped[Float] = mapped_column(Float)
-    customer_id: Mapped[str] = mapped_column(ForeignKey("customers.id"), nullable=True)
+    customer_id: Mapped[str] = mapped_column(
+        ForeignKey("customers.id"), nullable=True
+    )
     employee_id: Mapped[str] = mapped_column(ForeignKey("employees.id"))
 
 
@@ -55,6 +61,7 @@ class TransferOrder(BaseModel, Base):
     to another with product category, name, color, quantity, unit_cost_price,
     total_price, order_id, supplier_id, employee_id.
     """
+
     __tablename__ = "transfer_orders"
 
     order_id: Mapped[str] = mapped_column(ForeignKey("orders.id"))
@@ -64,6 +71,8 @@ class TransferOrder(BaseModel, Base):
     quantity: Mapped[int] = mapped_column(Integer)
     unit_cost_price: Mapped[Float] = mapped_column(Float)
     total_price: Mapped[Float] = mapped_column(Float)
-    transfer_type: Mapped[str] = mapped_column(Enum("IN", "OUT", name="tranfer_type"))
+    transfer_type: Mapped[str] = mapped_column(
+        Enum("IN", "OUT", name="tranfer_type")
+    )
     warehouse_id: Mapped[str] = mapped_column(ForeignKey("warehouses.id"))
     employee_id: Mapped[str] = mapped_column(ForeignKey("employees.id"))

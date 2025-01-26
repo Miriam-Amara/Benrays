@@ -18,6 +18,7 @@ class Purchase(BaseModel, Base):
     total_price, supplier, warehouse, payment status, payment type,
     purchase_order_id, employee
     """
+
     __tablename__ = "purchases"
 
     category_id: Mapped[str] = mapped_column(ForeignKey("categories.id"))
@@ -27,10 +28,15 @@ class Purchase(BaseModel, Base):
     unit_cost_price: Mapped[Float] = mapped_column(Float)
     total_price: Mapped[Float] = mapped_column(Float)
     amount_paid: Mapped[Float] = mapped_column(Float)
-    payment_status: Mapped[str] = mapped_column(Enum("paid", "unpaid", "deposit"))
+    payment_status: Mapped[str] = mapped_column(
+        Enum("paid", "unpaid", "deposit")
+    )
     payment_type: Mapped[str] = mapped_column(String(20))
-    supplier_id: Mapped[str] = mapped_column(ForeignKey("suppliers.id"),
-                                             default="unknown")
+    supplier_id: Mapped[str] = mapped_column(
+        ForeignKey("suppliers.id"), default="unknown"
+    )
     warehouse_id: Mapped[str] = mapped_column(ForeignKey("warehouses.id"))
-    purchase_order_id: Mapped[str] = mapped_column(ForeignKey("purchase_orders.id"), nullable=True)
+    purchase_order_id: Mapped[str] = mapped_column(
+        ForeignKey("purchase_orders.id"), nullable=True
+    )
     employee_id: Mapped[str] = mapped_column(ForeignKey("employees.id"))

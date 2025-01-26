@@ -16,9 +16,11 @@ class Order(BaseModel, Base):
     Represents orders for products in Benrays with
     orders status and emplyee name
     """
+
     __tablename__ = "orders"
 
     order_status: Mapped[str] = mapped_column(String(20))
     payment_status: Mapped[str] = mapped_column(
-                                                Enum("paid", "unpaid", "deposit"))
+        Enum("paid", "unpaid", "deposit")
+    )
     payment_methods: Mapped[str] = mapped_column(String(150))

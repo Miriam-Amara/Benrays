@@ -10,11 +10,13 @@ from models.base_model import BaseModel, Base
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import Integer, ForeignKey
 
+
 class Inventory(BaseModel, Base):
-    """"
+    """ "
     Represents an inventory with product category, product name,
     product color, quantity and warehouse name.
     """
+
     __tablename__ = "inventory"
 
     category_id: Mapped[str] = mapped_column(ForeignKey("categories.id"))

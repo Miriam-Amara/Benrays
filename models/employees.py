@@ -15,6 +15,7 @@ class Employee(BaseModel, Base):
     """
     Defines the Employees in Benrays inventory management system
     """
+
     __tablename__ = "employees"
 
     first_name: Mapped[str] = mapped_column(String(30))
@@ -38,6 +39,6 @@ class Employee(BaseModel, Base):
     permissions: Mapped[str] = mapped_column(String(200), nullable=True)
 
     warehouses: Mapped[list["Warehouse"]] = relationship(
-                                                secondary=warehouse_employee,
-                                                back_populates="employees",
-                                            )
+        secondary=warehouse_employee,
+        back_populates="employees",
+    )

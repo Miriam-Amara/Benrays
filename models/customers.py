@@ -14,6 +14,7 @@ class Customer(BaseModel, Base):
     """
     Defines the Warehouses in Benrays inventory management system
     """
+
     __tablename__ = "customers"
     first_name: Mapped[str] = mapped_column(String(50))
     last_name: Mapped[str] = mapped_column(String(50), nullable=True)

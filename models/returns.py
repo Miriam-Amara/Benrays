@@ -18,6 +18,7 @@ class ReturnInward(BaseModel, Base):
     total_price, payment status, payment type, customer, warehouse,
     reason, employee
     """
+
     __tablename__ = "return_inwards"
 
     category_id: Mapped[str] = mapped_column(ForeignKey("categories.id"))
@@ -27,13 +28,16 @@ class ReturnInward(BaseModel, Base):
     unit_selling_price: Mapped[Float] = mapped_column(Float)
     total_price: Mapped[Float] = mapped_column(Float)
     amount_paid: Mapped[Float] = mapped_column(Float)
-    payment_status: Mapped[str] = mapped_column(Enum("paid", "unpaid", "deposit"))
+    payment_status: Mapped[str] = mapped_column(
+        Enum("paid", "unpaid", "deposit")
+    )
     payment_type: Mapped[str] = mapped_column(String(20))
-    customer_id: Mapped[str] = mapped_column(ForeignKey("customers.id"), default="unknown")
+    customer_id: Mapped[str] = mapped_column(
+        ForeignKey("customers.id"), default="unknown"
+    )
     warehouse_id: Mapped[str] = mapped_column(ForeignKey("warehouses.id"))
     reason: Mapped[str] = mapped_column(String(100), nullable=True)
     employee_id: Mapped[str] = mapped_column(ForeignKey("employees.id"))
-
 
 
 class ReturnOutward(BaseModel, Base):
@@ -43,6 +47,7 @@ class ReturnOutward(BaseModel, Base):
     total_price, payment status, payment type, supplier, warehouse,
     reason, employee
     """
+
     __tablename__ = "return_outwards"
 
     category_id: Mapped[str] = mapped_column(ForeignKey("categories.id"))
@@ -52,9 +57,13 @@ class ReturnOutward(BaseModel, Base):
     unit_cost_price: Mapped[Float] = mapped_column(Float)
     total_price: Mapped[Float] = mapped_column(Float)
     amount_paid: Mapped[Float] = mapped_column(Float)
-    payment_status: Mapped[str] = mapped_column(Enum("PAID", "UNPAID", "DEPOSIT"))
+    payment_status: Mapped[str] = mapped_column(
+        Enum("PAID", "UNPAID", "DEPOSIT")
+    )
     payment_type: Mapped[str] = mapped_column(String(20))
-    supplier_id: Mapped[str] = mapped_column(ForeignKey("suppliers.id"), default="unknown")
+    supplier_id: Mapped[str] = mapped_column(
+        ForeignKey("suppliers.id"), default="unknown"
+    )
     warehouse_id: Mapped[str] = mapped_column(ForeignKey("warehouses.id"))
     reason: Mapped[str] = mapped_column(String(100), nullable=True)
     employee_id: Mapped[str] = mapped_column(ForeignKey("employees.id"))
