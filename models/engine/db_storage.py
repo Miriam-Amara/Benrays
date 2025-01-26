@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 """
-This module defines the DBStorage class, which provides methods to 
-interact with a database using SQLAlchemy. It handles database 
+This module defines the DBStorage class, which provides methods to
+interact with a database using SQLAlchemy. It handles database
 connections, performs CRUD operations, and ensures data persistence.
 """
 
@@ -33,31 +33,47 @@ port = os.getenv("BENRAYS_INVENTORY_MYSQL_PORT")
 database = os.getenv("BENRAYS_INVENTORY_MYSQL_DATABASE")
 
 
-
 db_url = f"mysql+mysqldb://{db_user}:{passwd}@{host}:{port}/{database}"
-
 
 
 class DBStorage:
     """
     A class to manage storage of data in a database using SQLAlchemy.
     """
+
     __engine = None
     __session = None
-    classes = [Category, Product, Color, Warehouse, Employee, Customer,
-               Supplier, Inventory, InventoryTransaction, Sale,
-               Purchase, Order, PurchaseOrder, CustomerOrder, 
-               TransferOrder, ReturnInward, ReturnOutward,
-            ]
+    classes = [
+        Category,
+        Product,
+        Color,
+        Warehouse,
+        Employee,
+        Customer,
+        Supplier,
+        Inventory,
+        InventoryTransaction,
+        Sale,
+        Purchase,
+        Order,
+        PurchaseOrder,
+        CustomerOrder,
+        TransferOrder,
+        ReturnInward,
+        ReturnOutward,
+    ]
 
     def __init__(self):
-        """ initializes attributes for DBStorage objects """
-        self.__engine = create_engine(db_url, pool_pre_ping=True,)
+        """initializes attributes for DBStorage objects"""
+        self.__engine = create_engine(
+            db_url,
+            pool_pre_ping=True,
+        )
         if os.getenv("DB_ENV") == "test":
             # parse the test database for testing to avoid
             # deletion of the actual database.
             Base.metadata.drop_all(self.__engine)
-        
+
     def all(self, cls=None):
         """
         Returns all objects or objects of the specified class from
@@ -80,21 +96,21 @@ class DBStorage:
             objects_dict[key] = obj
 
         return objects_dict
-    
-    def get(self, cls, id=None, first_name=None, email=None):
-        """ Returns the object that has the specified id or name"""
+
+    def get(self, cls, id=None, name=None, email=None):
+        """Returns the object that has the specified id or name"""
         obj_dict = {}
         obj = ""
         if id:
             query = select(cls).where(cls.id == id)
             obj = self.__session.scalars(query).one_or_none()
-        elif first_name:
-            query = select(cls).where(cls.first_name == first_name)
+        elif name:
+            query = select(cls).where(cls.name == name)
             obj = self.__session.scalars(query).one_or_none()
         elif email:
             query = select(cls).where(cls.email == email)
             obj = self.__session.scalars(query).one_or_none()
-        
+
         if obj:
             key = f"{obj.__class__.__name__}.{obj.id}"
             obj_dict[key] = obj
@@ -114,16 +130,16 @@ class DBStorage:
         else:
             for clsname in DBStorage.classes:
                 query = select(func.count(clsname.id))
-                total_count = total_count + self.__session.scalars(query).first()
+                total_count = (total_count +
+                               self.__session.scalars(query).first())
         return total_count
 
-
     def new(self, obj):
-        """ Adds objects to database """
+        """Adds objects to database"""
         self.__session.add(obj)
 
     def save(self):
-        """ Saves objects to database """
+        """Saves objects to database"""
         try:
             self.__session.commit()
         except Exception as e:
@@ -131,23 +147,21 @@ class DBStorage:
             raise ValueError(f"Failed to commit: {e}")
 
     def reload(self):
-        """ Creates all tables and database session """
+        """Creates all tables and database session"""
         try:
             Base.metadata.create_all(self.__engine)
         except Exception as e:
-            print(e)
             return
         self.__session = scoped_session(
-                            sessionmaker(bind=self.__engine, expire_on_commit=False)
-                        )
-
+            sessionmaker(bind=self.__engine, expire_on_commit=False)
+        )
 
     def delete(self, obj):
-        """ Deletes object from database """
+        """Deletes object from database"""
         self.__session.delete(obj)
 
     def close(self):
-        """ Closes database session """
+        """Closes database session"""
         self.__session.remove()
 
 
