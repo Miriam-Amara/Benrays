@@ -8,7 +8,7 @@ Benrays Store database.
 
 from models import storage
 from models.employees import Employee
-from views.employees import employees_bp
+from api.v1.views.employees import employees_bp
 
 from flask_restful import Api, Resource, abort
 
@@ -20,6 +20,7 @@ class DeleteEmployee(Resource):
     This class provides delete method for
     deleting an employee from the database
     """
+
     def delete(self, id):
         """
         Checks if the employee id exists in the
@@ -34,5 +35,6 @@ class DeleteEmployee(Resource):
         storage.save()
 
         return 204
+
 
 api.add_resource(DeleteEmployee, "/delete/<id>")
