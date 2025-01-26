@@ -1,6 +1,10 @@
 
 /* --------------------- REGISTRATION FORM STYLES --------------------- */
 
+.offcanvas-body{
+    padding-bottom: 0;
+}
+
 /* contains two divs for two form labels */
 .labels{
     display: flex;
@@ -60,9 +64,12 @@
 
 /* ---------- BUTTONS ---------- */
 .bttn{
+    background-color: #FFF;
     display: flex;
     justify-content: end;
     align-items: center;
+    position: sticky;
+    bottom: 0;
 }
 
 .btn-save{
