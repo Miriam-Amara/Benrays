@@ -27,18 +27,21 @@ class EmployeeRegistration(FlaskForm):
     last_name = StringField(
         "Last Name", validators=[DataRequired(), Length(min=3, max=30)]
     )
-    age = IntegerField("Age",
-                       validators=[DataRequired(),
-                                   NumberRange(min=18, max=50)])
-    gender = RadioField("Gender", validators=[DataRequired()],
-                        choices=[("male", "Male"), ("female", "Female")])
+    age = IntegerField("Age", validators=[DataRequired(),
+                                          NumberRange(min=18, max=50)])
+    gender = RadioField(
+        "Gender",
+        validators=[DataRequired()],
+        choices=[("male", "Male"), ("female", "Female")],
+    )
     marital_status = RadioField(
-                            "Marital Status",
-                            validators=[DataRequired()],
-                            choices=[("single", "Single"), ("married", "Married")]
-                        )
-    phone_number = StringField("Phone Number",
-                               validators=[DataRequired(), Length(11)])
+        "Marital Status",
+        validators=[DataRequired()],
+        choices=[("single", "Single"), ("married", "Married")],
+    )
+    phone_number = StringField(
+        "Phone Number", validators=[DataRequired(), Length(min=11, max=11)]
+    )
     email = StringField("Email",
                         validators=[DataRequired(), Email(), Length(max=60)])
     street = StringField("Street",
@@ -53,10 +56,16 @@ class EmployeeRegistration(FlaskForm):
     confirm_password = PasswordField(
         "Confirm Password", validators=[EqualTo("password")]
     )
-    role = RadioField("Role",
-                      validators=[DataRequired()],
-                      choices=[("admin", "Admin"), ("salesperson", "Salesperson"),
-                                ("secretary", "Secretary"), ("manager", "Manager")])
+    role = RadioField(
+        "Role",
+        validators=[DataRequired()],
+        choices=[
+            ("admin", "Admin"),
+            ("salesperson", "Salesperson"),
+            ("secretary", "Secretary"),
+            ("manager", "Manager"),
+        ],
+    )
     work_experience = TextAreaField("Work Experience",
                                     validators=[Length(max=200)])
     qualifications = StringField("Educational Qualifications")
@@ -65,12 +74,15 @@ class EmployeeRegistration(FlaskForm):
         validators=[DataRequired(), Length(min=5, max=150)]
     )
     guarantor_contact = StringField(
-        "Guarantor's Phone Number", validators=[DataRequired(), Length(11)]
+        "Guarantor's Phone Number",
+        validators=[DataRequired(), Length(min=11, max=11)]
     )
     salary = FloatField("Salary", validators=[NumberRange(min=0.00)])
     permissions = StringField("Permissions", validators=[Length(max=200)])
     warehouses = FieldList(
-        StringField("Warehouse Id", validators=[DataRequired(), Length(36)]),
+        StringField(
+            "Warehouse Id", validators=[DataRequired(), Length(min=36, max=36)]
+        ),
         min_entries=1,
     )
     submit = SubmitField("Save")
