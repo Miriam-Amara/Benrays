@@ -8,14 +8,15 @@ Benrays Store database.
 
 from models import storage
 from models.employees import Employee
-from views.employees import employees_bp
-from views.employees.utils import check_required_attributes
-from views.employees.utils import delete_attr
+from api.v1.views.employees import employees_bp
+from api.v1.views.employees.utils import check_required_attributes
+from api.v1.views.employees.utils import delete_attr
 
 from flask_restful import Api, Resource, abort
 
 
 api = Api(employees_bp)
+
 
 class UpdateEmployee(Resource):
     """
@@ -42,7 +43,6 @@ class UpdateEmployee(Resource):
 
         for attr, value in data.items():
             if value != employee_data.get(attr):
-                # print("value from database: ", employee_data.get(attr), type(employee_data.get(attr)))
                 setattr(employee, attr, value)
         employee.save()
 
@@ -50,5 +50,6 @@ class UpdateEmployee(Resource):
         delete_attr(employee_dict=employee_data, *delete_data)
 
         return employee_data, 200
-    
+
+
 api.add_resource(UpdateEmployee, "/update/<id>")
