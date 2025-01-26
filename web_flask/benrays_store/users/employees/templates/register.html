@@ -196,38 +196,39 @@
                             {% endif %}
                         </div>
                     </div>
+                    {% if post_data  %}
+                        <div class="labels">
+                            <div class="label-1">
+                                {{ form.password.label(class="control-label") }}
+                                
+                                {% if form.password.errors %}
+                                    {{ form.password(class="is-invalid control-label-data") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.password.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.password(class="control-label-data") }}
+                                {% endif %}
+                            </div>
 
-                    <div class="labels">
-                        <div class="label-1">
-                            {{ form.password.label(class="control-label") }}
-                            
-                            {% if form.password.errors %}
-                                {{ form.password(class="is-invalid control-label-data") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.password.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.password(class="control-label-data") }}
-                            {% endif %}
+                            <div class="label-2">
+                                {{ form.confirm_password.label(class="control-label") }}
+                                
+                                {% if form.confirm_password.errors %}
+                                    {{ form.confirm_password(class="is-invalid control-label-data") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.confirm_password.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.confirm_password(class="control-label-data") }}
+                                {% endif %}
+                            </div>
                         </div>
-
-                        <div class="label-2">
-                            {{ form.confirm_password.label(class="control-label") }}
-                            
-                            {% if form.confirm_password.errors %}
-                                {{ form.confirm_password(class="is-invalid control-label-data") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.confirm_password.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.confirm_password(class="control-label-data") }}
-                            {% endif %}
-                        </div>
-                    </div>
+                    {% endif %}
 
                     <div class="labels">
                         <div class="label-1">
@@ -342,7 +343,7 @@
                     </div>
                 </fieldset>
                 <div class="bttn">
-                    <button class="btn btn-disable" data-bs-dismiss="offcanvas" aria-label="Close">
+                    <button  id="closeRedirectBtn" data-redirect="{{ url_for('employee.employee') }}" class="btn btn-secondary btn-disable" data-bs-dismiss="offcanvas" aria-label="Close">
                         Close
                     </button>
                     {{ form.submit(class="btn btn-primary btn-save") }}

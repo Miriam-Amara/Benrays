@@ -1,0 +1,22 @@
+  <!-- Modal -->
+  <div class="modal fade delete" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="deleteModalLabel"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            You are about to delete the account of "{{ employee["first_name"] }}
+            {{ employee["last_name"] }}" with (ID: {{ employee["id"] }}) . Do you want to continue?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Back</button>
+          {% set name = employee["first_name"] + employee["last_name"] %}
+          <form action="{{ url_for('employee.delete', name=name, id=employee['id']) }}" method="POST">
+            <input class="btn btn-danger" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

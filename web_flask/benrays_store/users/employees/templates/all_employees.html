@@ -1,0 +1,41 @@
+<main class="table">
+    <div class="theader">
+        <div class="dcol dcol col-header emp_id">Employee Id</div>
+        <div class="dcol col-header">First Name</div>
+        <div class="dcol col-header">Last Name</div>
+        <div class="dcol col-header">Phone Number</div>
+        <div class="dcol col-header">Role</div>
+        <div class="dcol col-header">Warehouses</div>
+        <div class="dcol col-header action">Action</div>
+    </div>
+
+    {% if employees %}
+        {% for employee in employees %}
+            {% set color_value = "color" if (loop.index0 % 2) == 0 else "no_color" %}
+
+            <div class="trow">
+                <div class="dcol col-{{ color_value }} emp_id">{{ employee["id"] }}</div>
+                <div class="dcol col-{{ color_value }}">{{ employee["first_name"] }}</div>
+                <div class="dcol col-{{ color_value }}">{{ employee["last_name"] }}</div>
+                <div class="dcol col-{{ color_value }}">{{ employee["phone_number"] }}</div>
+                <div class="dcol col-{{ color_value }}">{{ employee["role"] }}</div>
+                <div class="dcol col-{{ color_value }}">{{ employee["warehouses"] }}</div>
+                <div class="dcol col-{{ color_value }} action">
+                    <ul class="btn-action col-{{ color_value }}">
+                        <li class="btn-edit">
+                                <a href="{{ url_for('employee.update', id=employee['id']) }}">
+                                    <img src="{{ url_for('static', filename='images/edit_dark_icon.png') }}" alt="">
+                                </a>
+                        </li>
+                        <li class="btn-delete">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                <img src="{{ url_for('static', filename='images/delete_icon.png') }}" alt="">
+                            </button>
+                            {% include "delete.html" %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</main>
