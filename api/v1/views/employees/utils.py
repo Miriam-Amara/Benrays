@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+"""
+This module contains helper functions for
+employees route.
+"""
 
 from flask_restful import reqparse, abort
 
