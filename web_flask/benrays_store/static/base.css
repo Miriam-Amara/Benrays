@@ -5,6 +5,12 @@ PRIMARY COLOR - #2B2E63, LIGHT SHADE (9% opacity) - #E9EAF1, DARK SHADE (34% opa
 SECONDARY COLOR - #893D06
 */
 
+/* --------- FONT FAMILY ---------*/
+/* 
+DEFAULT - Lato, seriff,
+Benrays Store in header - Lora, serif,
+*/
+
 
 body{
     font-family: "Lato", serif;
@@ -211,5 +217,5 @@ header div{
 
 /* ---------- MAIN SECTION ---------- */
 .col-header{
-    border-right: 1px solid #E9EAF1;
+    border-right: 1px solid #2B2E6357;
 }
