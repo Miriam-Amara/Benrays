@@ -15,5 +15,6 @@ VERSION = "v1"
 EMPLOYEES = "/employees"
 headers = {"Content-Type": "application/json"}
 
-def employees(PATH=""):
+
+def api_employees_route(PATH=""):
     return BASE_URL + BASE_PATH + VERSION + EMPLOYEES + PATH

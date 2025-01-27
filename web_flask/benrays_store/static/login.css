@@ -1,0 +1,80 @@
+/* contains styles for users login form */
+
+/* --------- COLORS ---------*/
+/* 
+GREY COLORS - #FFF #000 
+PRIMARY COLOR - #2B2E63, LIGHT SHADE (9% opacity) - #E9EAF1, DARK SHADE (34% opacity) -  #2B2E6357,
+SECONDARY COLOR - #893D06
+*/
+
+/* --------- FONT FAMILY ---------*/
+/* 
+DEFAULT - Lato, seriff,
+Benrays Store in header - Lora, serif,
+*/
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    box-sizing: border-box;
+}
+
+.container{
+    font-family: "Lato", serif;
+    height: 100vh;
+    width: 37.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container h1{
+    font-size: 5rem;
+    font-weight: 600;
+    color: #2B2E63;
+    font-family: "Lora", serif;
+    width: 100%;
+    text-align: center;
+}
+
+.form-container{
+    width: 100%;
+}
+
+.form-label{
+    width: 100%;
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.label{
+    width: 20%;
+}
+
+.label-data{
+    width: 100%;
+    height: 3.125rem;
+    padding: 0.625rem;
+    border: 1px solid #E9EAF1;
+    background-color: #E9EAF1;
+}
+
+.nav{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-login{
+    font-size: 2rem;
+    color: #FFF;
+    border: none;
+    border-radius: 4px;
+    background-color: #2B2E63;
+    width: 9.375rem;
+}

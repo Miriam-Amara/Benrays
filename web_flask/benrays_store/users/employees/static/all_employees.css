@@ -1,0 +1,75 @@
+/* STYLES FOR all_employees.html */
+
+/* 
+GREY COLORS - #FFF #000 
+PRIMARY COLOR - #2B2E63, LIGHT SHADE (9% opacity) - #E9EAF1, DARK SHADE (34% opacity) -  #2B2E6357,
+SECONDARY COLOR - #893D06
+*/
+
+.table{
+    width: 100%;
+    border: 1px solid #E9EAF1;
+    display: flex;
+    flex-direction: column;
+}
+
+.theader, .trow{
+    width: 100%;
+    border-bottom: 1px solid #2B2E6357;
+    margin: 0;
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.dcol{
+    text-align: start;
+    width: 8.8rem;
+    height: 3.5rem;
+    padding: 8px;
+    border-right: 1px solid #2B2E6357;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+
+}
+
+.theader div{
+    justify-content: center;
+}
+
+.col-color{
+    background-color: #E9EAF1 !important;
+}
+
+.emp_id{
+    width: 180px !important;
+}
+.action{
+    width: 80px !important;
+    border-right: none !important;
+    display: flex;
+}
+
+.btn-action {
+    width: 100%;
+    padding: 0 !important;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-action li{
+    list-style: none;
+    height: 30px;
+    width: 30px;
+    border: 1px solid  #2B2E6357;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-action img{
+    width: 15px;
+    height: 15px;
+}
+
