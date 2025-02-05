@@ -62,23 +62,23 @@ The API endpoints include:
 
 Employees<br>
 Create:<br>
- - /api/v1/employees/register 
+ - /api/v1/employees/register<br>
 Update:<br>
- - `/api/v1/employees/update/<id>`
+ - `/api/v1/employees/update/<id>`<br>
 Read:<br>
  - /api/v1/employees/
  - `/api/v1/employees/<id>`
  - /api/v1/employees/data
- - /api/v1/employees/count
+ - /api/v1/employees/count<br>
  Delete:<br>
- - `/api/v1/employees/<id>`
+ - `/api/v1/employees/<id>`<br>
 
 
 Products<br>
 Create:<br>
  - /api/v1/products/register
  - /api/v1/products/category/register
- - /api/v1/products/color/register
+ - /api/v1/products/color/register<br>
  Update:<br>
   - `/api/v1/products/update/<id>`
   - `/api/v1/products/category/update/<id>`
