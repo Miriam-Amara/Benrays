@@ -1,7 +1,10 @@
 # ELD-Benrays Store Web Application 
 
-This is a web application that allows ELD-Benrays company to record and keep track of their inventory.
+This is a web application that allows ELD-Benrays company to record and keep track of their inventory.<br>
 **To view the data models, ER diagrams and UI designs, check out this link to the slide presentation: https://drive.google.com/file/d/11VnjXw7muhkJhuLKK0EAZJgjioYF6Cyp/view?usp=sharing**
+<br>
+**Link to the video demo:
+https://drive.google.com/file/d/1NT3WCpzFQahiqlDBpyyjwD0wcmHtzDtS/view?usp=sharing**
 
 ## Features 
 
